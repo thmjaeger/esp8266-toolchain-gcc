@@ -31,6 +31,7 @@ RUN cd /toolchain \
 # Now configure and build xtensa cross compiler
 RUN cd /toolchain/crosstool-NG \
   && ./ct-ng xtensa-lx106-elf \
+  && sed -r -i s%CT_INSTALL_DIR_RO=y%"#"CT_INSTALL_DIR_RO=y% .config \
   && ./ct-ng build \
   && rm builds/xtensa-lx106-elf/build.log.bz2
 
